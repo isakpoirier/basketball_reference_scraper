@@ -29,7 +29,8 @@ def get_roster(team, season_end_year):
             lambda x: pd.to_datetime(x) if pd.notna(x) else pd.NaT)
         df['NATIONALITY'] = df['NATIONALITY'].apply(
             lambda x: x.upper() if pd.notna(x) else '')
-
+        df['TEAM'] = team
+        df['YEAR'] = season_end_year
     return df
 
 
@@ -54,7 +55,9 @@ def get_team_stats(team, season_end_year, data_format='PER_GAME'):
         df = df.drop(['Rk', 'Team'], axis=1)
         df.loc[:, 'SEASON'] = f'{season_end_year-1}-{str(season_end_year)[2:]}'
         s = df[df['TEAM'] == team]
-        return pd.Series(index=list(s.columns), data=s.values.tolist()[0])
+        #return pd.Series(index=list(s.columns), data=s.values.tolist()[0])
+        return s
+
 
 
 def get_opp_stats(team, season_end_year, data_format='PER_GAME'):
@@ -80,7 +83,7 @@ def get_opp_stats(team, season_end_year, data_format='PER_GAME'):
         df.rename(columns={'OPP_TEAM': 'TEAM'}, inplace=True)
         df.loc[:, 'SEASON'] = f'{season_end_year-1}-{str(season_end_year)[2:]}'
         s = df[df['TEAM'] == team]
-        return pd.Series(index=list(s.columns), data=s.values.tolist()[0])
+        return s
 
 
 def get_team_misc(team, season_end_year):
