@@ -20,7 +20,7 @@ python-dotenv = "^0.21.0"
 
 
 [tool.poetry.scripts]
-data-scrape = "scrape:start"
+data_scrape = "basketball_reference_scraper:start"
 
 [tool.poetry.dev-dependencies]
 

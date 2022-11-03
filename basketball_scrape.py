@@ -1,6 +1,10 @@
 import subprocess
+import os
 from dotenv import load_dotenv
-from libs.scraper_utils import run_scrape
+from libs.scraper_utils import scrape_data
+
+
+load_dotenv() 
 
 OUTPUT_LOCATIONS = [
     os.getenv("GAME_LOGS"), 
@@ -14,6 +18,6 @@ class DataScraper:
     def __init__(self):
         self.years = [2019, 2020, 2021, 2022, 2023]
 
-    def run_scrape():
+    def run_scrape(self):
         scrape_data(output_loc = OUTPUT_LOCATIONS,
             years = self.years)
