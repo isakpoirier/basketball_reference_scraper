@@ -14,6 +14,8 @@ OUTPUT_LOCATIONS = [
 
 ]
 
+bat_pth = os.getenv("BAT_PATH")
+
 class DataScraper:
     def __init__(self):
         self.years = [2019, 2020, 2021, 2022, 2023]
@@ -21,3 +23,6 @@ class DataScraper:
     def run_scrape(self):
         scrape_data(output_loc = OUTPUT_LOCATIONS,
             years = self.years)
+        subprocess.call(bat_pth, shell = True)
+
+

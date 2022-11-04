@@ -8,7 +8,8 @@ def scrape_data(output_loc, years):
         'ATL','BOS','CHO','CLE','DAL','PHO','NOP','NYK','PHI','CHI','POR',
         'SAS','MIN','TOR','WAS','ORL','UTA','OKC','MEM','IND','MIA','BRK',
         'GSW','HOU','DEN','SAC','LAC','LAL','DET','MIL']
-    
+
+
     game_logs = pd.DataFrame()
     rosters = pd.DataFrame()
     team_stats_df = pd.DataFrame()
@@ -33,7 +34,6 @@ def scrape_data(output_loc, years):
                         pass
     except:
         pass
-
     game_logs.to_csv(output_loc[0], index = False)
     rosters.to_csv(output_loc[1], index = False)
     team_stats_df.to_csv(output_loc[2], index = False)

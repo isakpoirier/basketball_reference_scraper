@@ -45,7 +45,7 @@ def get_stats(_name, stat_type='PER_GAME', playoffs=False, career=False, ask_mat
         return df
 
 
-def get_game_logs(_name, year, playoffs=False, ask_matches=True):
+def get_game_logs(_name, year, playoffs=False, ask_matches=False):
     name = lookup(_name, ask_matches)
     suffix = get_player_suffix(name).replace('/', '%2F').replace('.html', '')
     if playoffs:
@@ -66,7 +66,7 @@ def get_game_logs(_name, year, playoffs=False, ask_matches=True):
             df['DATE'] = pd.to_datetime(df['DATE'])
             df['NAME'] = name
             df['YEAR'] =  year
-            df = df[~df['GS'].isin('Did Not Play', 'Inactive')]
+            df = df[~df['GS'].isin(['Did Not Play', 'Inactive'])]
 
             return df
 
